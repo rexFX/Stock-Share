@@ -1,12 +1,31 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 	const navigate = useNavigate();
+	const handler = useGoogleLogin({
+		onSuccess: ({ access_token }) => {
+			localStorage.setItem("token", access_token);
+			fetch(`${process.env.REACT_APP_BACKEND}/api/addUser`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${access_token}`,
+				},
+			})
+				.then(({ name, email }) => {
+					localStorage.setItem("name", name);
+					localStorage.setItem("email", email);
+				})
+				.catch((err) => console.log("error in login in frontend", err));
+			navigate("/dashboard");
+		},
+	});
 
 	const loginHandler = () => {
-		navigate("/dashboard");
+		handler();
 	};
 
 	return (
