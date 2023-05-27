@@ -207,13 +207,23 @@ const Dashboard = () => {
 									<button
 										className="m-4 w-30 border-2 p-2 border-black rounded-sm font-ubuntu bg-[#F9DCC4] hover:bg-[#FEC89A] transition-colors"
 										onClick={() => {
-											window.location.href =
-												"mailto:?subject=Me&body=Hello!";
+											window.open(
+												`mailto:?subject=Stock Price of ${company}&body=The stock price of ${company} on ${date} is ${currency} ${price}`,
+												"_blank"
+											);
 										}}
 									>
 										Share via email
 									</button>
-									<button className="m-4 w-30 border-2 p-2 border-black rounded-sm font-ubuntu bg-[#F9DCC4] hover:bg-[#FEC89A] transition-colors">
+									<button
+										className="m-4 w-30 border-2 p-2 border-black rounded-sm font-ubuntu bg-[#F9DCC4] hover:bg-[#FEC89A] transition-colors"
+										onClick={() => {
+											window.open(
+												`https://api.whatsapp.com/send?text=The stock price of ${company} on ${date} is ${currency} ${price}`,
+												"_blank"
+											);
+										}}
+									>
 										Share via Whatsapp
 									</button>
 								</div>
