@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { ReactComponent as Spinner } from "../spinner.svg";
 
@@ -46,18 +46,18 @@ const ChartRender = ({ stockData, priceDate }) => {
 	};
 
 	const options = {
-		responsive: true,
 		scales: {
 			y: {
 				beginAtZero: true,
 			},
 		},
+		aspectRatio: 2,
 	};
 
 	if (!stockData) return null;
 
 	return (
-		<div className="mt-20 w-full h-full max-w-[90%] lg:max-w-[85%] lg:max-h-[80%] flex justify-center">
+		<div className="mt-20 min-w-[15rem] flex justify-center">
 			<Line
 				ref={chartRef}
 				data={stockData[0]}
@@ -150,7 +150,7 @@ const Dashboard = () => {
 	};
 
 	return (
-		<div className="h-full w-full">
+		<div className="h-full w-full overflow-y-auto">
 			<nav className="w-full flex-row">
 				<button
 					className="m-4 w-20 border-2 p-2 border-black rounded-sm font-ubuntu bg-[#F9DCC4] hover:bg-[#FEC89A] transition-colors"
@@ -174,7 +174,7 @@ const Dashboard = () => {
 			</nav>
 
 			{data && (
-				<div className="h-[60%] w-full flex justify-center">
+				<div className="h-[60%] w-full flex justify-center overflow-x-auto">
 					<ChartRender
 						stockData={data}
 						priceDate={dateAndPriceSetter}
@@ -190,7 +190,7 @@ const Dashboard = () => {
 			<div
 				className={`w-full text-center ${
 					companyPresent
-						? "h-auto"
+						? "h-auto overflow-y-auto"
 						: "h-[50%] flex justify-center items-center"
 				}`}
 			>
@@ -225,14 +225,14 @@ const Dashboard = () => {
 						</h2>
 						<div className="flex justify-around items-center">
 							<input
-								className="border-2 border-black rounded-sm p-2 mt-4 mr-2 w-44 md:w-72 font-ubuntu"
+								className="border-2 border-black rounded-sm p-2 mt-4 mr-2 w-28 md:w-44 lg:w-72 font-ubuntu"
 								type="text"
 								value={company}
 								placeholder="Company"
 								onChange={(e) => setCompany(e.target.value)}
 							/>
 							<input
-								className="border-2 border-black rounded-sm p-2 mt-4 w-44 md:w-72 font-ubuntu"
+								className="border-2 border-black rounded-sm p-2 mt-4 w-28 md:w-44 lg:w-72 font-ubuntu"
 								type="text"
 								value={exchange}
 								placeholder="Exchange"
