@@ -57,7 +57,7 @@ const ChartRender = ({ stockData, priceDate }) => {
 	if (!stockData) return null;
 
 	return (
-		<div className="mt-20 min-w-[15rem] flex justify-center">
+		<div className="mt-20 w-full md:w-[80%] lg:w-[60%] flex justify-center">
 			<Line
 				ref={chartRef}
 				data={stockData[0]}
@@ -173,7 +173,7 @@ const Dashboard = () => {
 				)}
 			</nav>
 
-			<div className="flex-col overflow-y-auto">
+			<div className="w-full flex-col overflow-y-auto">
 				{data && (
 					<div className="h-[60%] w-full flex justify-center overflow-x-auto">
 						<ChartRender
@@ -197,9 +197,9 @@ const Dashboard = () => {
 				>
 					{companyPresent ? (
 						<>
-							<h2 className="mt-8 font-ubuntu text-lg md:text-2xl lg:text-4xl">
+							<h2 className="mt-8 md:mt-14 text-sm md:text-2xl lg:text-4xl font-ubuntu">
 								{date.length > 0
-									? `The stock price of ${company} on ${date} is ${price} ${currency}`
+									? `The stock price of ${company} on ${date} is ${currency} ${price}`
 									: `Select a date from the graph`}
 							</h2>
 							{date.length > 0 && (
@@ -224,16 +224,16 @@ const Dashboard = () => {
 							<h2 className="font-ubuntu text-center text-lg lg:text-4xl">
 								Company Search
 							</h2>
-							<div className="flex justify-around items-center">
+							<div className="flex justify-evenly items-center">
 								<input
-									className="border-2 border-black rounded-sm p-2 mt-4 mr-2 w-28 md:w-44 lg:w-72 font-ubuntu"
+									className="border-2 border-black rounded-sm p-2 mt-4 mr-2 w-28 md:w-44 lg:w-52 font-ubuntu"
 									type="text"
 									value={company}
 									placeholder="Company"
 									onChange={(e) => setCompany(e.target.value)}
 								/>
 								<input
-									className="border-2 border-black rounded-sm p-2 mt-4 w-28 md:w-44 lg:w-72 font-ubuntu"
+									className="border-2 border-black rounded-sm p-2 mt-4 w-28 md:w-44 lg:w-52 font-ubuntu"
 									type="text"
 									value={exchange}
 									placeholder="Exchange"
