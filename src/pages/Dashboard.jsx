@@ -197,11 +197,24 @@ const Dashboard = () => {
 				>
 					{companyPresent ? (
 						<>
-							<h2 className="mt-8 md:mt-14 text-sm md:text-2xl lg:text-4xl font-ubuntu">
-								{date.length > 0
-									? `The stock price of ${company} on ${date} is ${currency} ${price}`
-									: `Select a date from the graph`}
-							</h2>
+							{date.length > 0 ? (
+								<h2 className="mt-8 md:mt-14 text-sm md:text-2xl lg:text-4xl font-ubuntu text-left md:text-center p-3">
+									The stock price of{" "}
+									<span className="text-blue-800">
+										{company}
+									</span>{" "}
+									on{" "}
+									<span className="text-red-700">{date}</span>{" "}
+									is{" "}
+									<span className="text-green-700">
+										{currency} {price}
+									</span>
+								</h2>
+							) : (
+								<h2 className="mt-8 md:mt-14 text-sm md:text-2xl lg:text-4xl font-ubuntu p-3">
+									Select a date from the graph
+								</h2>
+							)}
 							{date.length > 0 && (
 								<div>
 									<button
@@ -267,7 +280,7 @@ const Dashboard = () => {
 								</button>
 							</div>
 							{companyList.length > 0 && (
-								<div className="w-full max-h-96 flex-col overflow-y-auto border-2 border-black rounded-lg p-4">
+								<div className="w-full max-h-64 flex-col overflow-y-auto border-2 border-black rounded-lg p-4">
 									{companyList.map((company) => {
 										return (
 											<button
