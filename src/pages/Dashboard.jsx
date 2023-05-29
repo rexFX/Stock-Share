@@ -243,8 +243,8 @@ const Dashboard = () => {
 							)}
 						</>
 					) : (
-						<div className="h-full w-[80%] md:w-[75%] lg:w-1/3 flex-col justify-center items-center mt-36">
-							<h2 className="font-ubuntu text-center text-lg lg:text-4xl">
+						<div className="h-full w-[80%] md:w-[75%] lg:w-1/3 flex-col justify-center items-center mt-24 lg:mt-36">
+							<h2 className="font-poppins text-center text-lg lg:text-4xl">
 								Company Search
 							</h2>
 							<div className="flex justify-evenly items-center">
@@ -259,7 +259,7 @@ const Dashboard = () => {
 									className="border-2 border-black rounded-sm p-2 mt-4 w-28 md:w-44 lg:w-52 font-ubuntu"
 									type="text"
 									value={exchange}
-									placeholder="Exchange"
+									placeholder="Exchange Symbol"
 									onChange={(e) =>
 										setExchange(e.target.value)
 									}

@@ -30,7 +30,7 @@ const Login = () => {
 
 	return (
 		<div className="h-full w-full flex flex-col justify-center items-center">
-			<h1 className="font-ubuntu text-4xl">Stock Share</h1>
+			<h1 className="font-poppins text-4xl">Stock Share</h1>
 			<button
 				className="mt-8 w-72 border-2 p-3 border-black rounded-sm font-ubuntu bg-[#F9DCC4] hover:bg-[#FEC89A] transition-colors"
 				onClick={loginHandler}
