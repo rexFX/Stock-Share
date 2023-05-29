@@ -1,5 +1,7 @@
 # Stock Share Application
 
+-   Backend: https://github.com/rexFX/Stock-Share-Backend
+
 ## Steps
 
 -   Login using Google
