@@ -10,5 +10,7 @@
 ## Screenshots
 
 ![Login](./images/login.png)
+
 ![Companies](./images/companies.png)
+
 ![Details](./images/details.png)
